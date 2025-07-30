@@ -140,3 +140,48 @@ section {
 }
 
 /* Implement your styling here */
+
+/* <article> Tag containing the movie title and poster*/
+.card
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: rgb(255, 255, 255);
+    width: 295px;
+    height: 450px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.33);
+}
+
+.card:hover
+{
+    background-color: rgba(203, 224, 253, 0.665);
+    transition: 0.5s;
+}
+
+/* <p> Tag containing the card title*/
+.cardTitle
+{
+    color: black;
+}
+
+/* <div> Tag containing the movie poster*/
+.cardPosterDiv
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* <img> Tagc containing the source of the movie poster*/
+.moviePoster
+{
+    margin: auto;
+    max-width: 250px;
+    max-height: 350px;
+}

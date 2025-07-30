@@ -9,7 +9,7 @@
  * 7.) There are 3 task in this that you have to complete. Discuss with your instructor to understand the task.
  */
 
-const myApiKey = ""; // <<-- ADD YOUR API KEY HERE. DELETE THIS KEY before uploading your code on Github or Brightspace, 
+const myApiKey = "2e5a14e0"; // <<-- ADD YOUR API KEY HERE. DELETE THIS KEY before uploading your code on Github or Brightspace, 
 
 const BASE_URL = "http://www.omdbapi.com";
 
@@ -125,6 +125,17 @@ async function getMovies(movieTitle) {
              * Else write a for loop which will iterator over filteredMovies array 
              * and call createMovieCard() for each movie object in this array.
              */
+            if (filteredMovies.length == 0)
+            {
+                createEmptyView();
+            }
+            else
+            {
+                for (i = 0; i < filteredMovies.length; i++)
+                {
+                    createMovieCard(filteredMovies[i]);
+                }
+            }
 
         }
     } catch(exception) {
@@ -169,7 +180,8 @@ function createEmptyView() {
      * TASK : 2
      * Create empty view and append it to "movieCards" section.
      */
-
+    const emptyView = createHtmlElement("p",["noresult"],"No Movie Found!! Please Search for Another Title.");
+    document.getElementById("movieCards").appendChild(emptyView);
 }
 
 /**
@@ -191,5 +203,17 @@ function createMovieCard(movie) {
      * TASK : 3
      * Create Movie Card and append it "movieCards" section.
      */
+    const articleCard = createHtmlElement("article", ["card"],"");
+    const movieTitleCard = createHtmlElement("p",["cardTitle"],`${movie.Title}`);
+    const posterDivCard = createHtmlElement("div", ["cardPosterDiv"],"");
+    const posterImgCard = createHtmlElement("img",["moviePoster"]);
+    posterImgCard.setAttribute("src",`${movie.Poster}`);
+    posterImgCard.setAttribute("alt",`${movie.Title}'s Movie Poster`);
+
+    posterDivCard.appendChild(posterImgCard);
+    articleCard.appendChild(movieTitleCard);
+    articleCard.appendChild(posterDivCard);
+
+    document.getElementById("movieCards").appendChild(articleCard);
 
 }
